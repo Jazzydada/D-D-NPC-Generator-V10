@@ -129,6 +129,11 @@ const names = {
     female: ["Bimpnottin","Carlin","Loopmottin","Nissa","Roywyn","Ellyjobell","Lorilla","Mardnab","Nyx","Tana"],
     surname: ["Nackle","Murnig","Daergel","Ningel","Timbers","Fiddlefen","Sparkspindle","Cobblelob","Beren","Turen"]
   },
+genasi: {
+  male: ["Aeris","Boros","Ignan","Neris","Pyros","Terran","Zephos","Korran","Lazur","Tharos"],
+  female: ["Aella","Caeli","Ilyra","Nirra","Pyra","Sola","Talia","Veyra","Zyra","Thessa"],
+  surname: ["Stormborn","Flameheart","Earthshaper","Wavebound","Skywhisper","Stoneveil","Seaflame","Windcaller","Ashwalker","Deepcurrent"]
+},
   halforc: {
     male: ["Grom","Ugar","Thok","Brug","Karash","Dorn","Rogar","Ulf","Karguk","Mogar"],
     female: ["Shauka","Urtha","Mogha","Krula","Sutha","Baggi","Engong","Myev","Ovina","Yevelda"],
@@ -351,7 +356,10 @@ const weightedRoll = (items, weightMap) => {
   return items[items.length - 1];
 };
 
-function generateName(race, gender) {
+function generateName(race, gender) {"Genasi (Air)": "genasi",
+"Genasi (Earth)": "genasi",
+"Genasi (Fire)": "genasi",
+"Genasi (Water)": "genasi",
   const key = (raceMap[race] || race || "").toLowerCase().replace(/\s+|[()]/g, "");
   let entry = names[key] || names["human"]; // Fallback til human hvis race mangler
   // vælg kønspool – ellers brug begge
