@@ -99,42 +99,167 @@ const raceMap = {
 
 /** ============ Names (unchanged; race-based) ============ */
 const names = {
-  human: { male:["Alric","Tomas","Cedric","Willem","Marcus","Robert","Victor","Joran","Edric","Jonas","Leoric","Harlan","Roderick","Tristan","Gavin"],
-           female:["Elira","Selene","Mara","Fiona","Katarina","Sophia","Isolde","Lydia","Rowena","Annette","Clara","Elise","Helena","Nadia","Vera"],
-           surname:["Blackwood","Fairweather","Strongarm","Ravenshadow","Holloway","Rivers","Marsh","Faraday","Kestrel","Dunwich","Ashford","Crowley","Thorne","Merriweather","Hawke"] },
-  dwarf: { male:["Thrain","Dain","Borin","Rurik","Kargrom","Eberk","Baern","Adrik","Bruenor","Harbek","Orsik","Taklinn","Travok","Vondal","Barendd"],
-           female:["Helja","Vistra","Brynja","Hlin","Sigrun","Audhild","Eldeth","Gunnloda","Finellen","Ilde","Liftrasa","Riswynn","Torbera","Dagnal","Bardryn"],
-           surname:["Ironfist","Stonehelm","Coppervein","Goldbeard","Frostaxe","Battlehammer","Fireforge","Dankil","Holderhek","Loderr","Ungart","Strakeln","Runeforge","Thunderbrand","Granitebraid"] },
-  elf:   { male:["Aelar","Thamior","Carric","Eldrin","Loric","Soveliss","Aeren","Ivaris","Paelias","Varis","Theren","Faelar","Iliphar","Rolen","Imar"],
-           female:["Arwen","Sylvara","Naivara","Shalana","Thia","Keyleth","Alaera","Lia","Miala","Shava","Nuala","Serel","Enna","Isilme","Meriele"],
-           surname:["Moonwhisper","Silverfrond","Windwalker","Dawnsinger","Evenwood","Starbloom","Softstep","Nightbreeze","Willowshade","Brightleaves","Sunweaver","Wavesong","Glimmerdawn","Featherfall","Eversky"] },
-  drow:  { male:["Ryld","Jarlaxle","Pharaun","Nalfein","Solaufein","Tazraen","Belwar","Zeknar","Verrak","Ilzt"],
-           female:["Quenthel","Vierna","Liriel","Zesstra","Triel","Halisstra","Zarra","Shi'nayne","Belira","Szinrae"],
-           surname:["Do'Urden","Baenre","Teken'ghym","Mizzrym","Faen'za","Xorlarrin","DeVir","Frey'lar","Despana","Kenafin"] },
-  halfling: { male:["Alton","Milo","Corrin","Perrin","Finnan","Merric","Roscoe","Colby","Tobin","Doolan"],
-           female:["Andry","Cora","Jillian","Seraphina","Shaena","Lavinia","Tegan","Verna","Bree","Marigold"],
-           surname:["Tealeaf","Brushgather","Goodbarrel","Underbough","Greenbottle","High-hill","Thistlefoot","Honeypot","Hilltopple","Hearthhome"] },
-  gnome: { male:["Boddynock","Fonkin","Warryn","Zook","Alston","Jebeddo","Pilwicken","Foddex","Duvamil","Wizzle"],
-           female:["Bimpnottin","Carlin","Loopmottin","Nissa","Roywyn","Ellyjobell","Lorilla","Mardnab","Nyx","Tana"],
-           surname:["Nackle","Murnig","Daergel","Ningel","Beren","Timbers","Fiddlefen","Sparkspindle","Cobblelob","Turen"] },
-  halforc: { male:["Grom","Ugar","Thok","Brug","Karash","Dorn","Rogar","Ulf","Karguk","Mogar"],
-           female:["Shauka","Urtha","Mogha","Krula","Sutha","Baggi","Engong","Myev","Ovina","Yevelda"],
-           surname:["Bonebreaker","Skullcrusher","Red Fang","Grimscar","Bloodtusk","Ironmaw","Skullcleaver","Rotfang","Stonehide","Ashskull"] },
-  tiefling: { male:["Malachai","Zephyr","Damakos","Therai","Akmenos","Lucian","Mordai","Zeth","Erebus","Caelum"],
-           female:["Nyx","Seraphine","Leucis","Kallista","Azariah","Belladonna","Lilith","Rieta","Zaida","Vesper"],
-           surname:["Shadowrend","Emberborn","Hellbrand","Darkflame","Nightbloom","Ashenveil","Cindervale","Grimlight","Umbrage","Doomwhisper"] },
-  dragonborn: { male:["Arjhan","Balasar","Rhogar","Torinn","Kriv","Medrash","Nadarr","Pandjed","Patrin","Tarhun"],
-           female:["Akra","Sora","Thava","Vyra","Jheri","Kava","Mishann","Nala","Perra","Uadjit"],
-           surname:["Myastan","Clethtinthiallor","Nemmonis","Drachedandion","Kepeshkmolik","Fenkenkabradon","Verthisathurgiesh","Yrjixtileth","Shestendeliath","Zekkar"] },
-  goliath: { male:["Aukan","Kavak","Thalai","Jorrun","Eglath","Gauthak","Iligit","Manneo","Othek","Thotham"],
-           female:["Vaunea","Imra","Orila","Anaq","Hulda","Keothi","Maveith","Nola","Thalai","Rava"],
-           surname:["Stoneshield","Thunderstep","Boulderborn","Skywatcher","Rockrunner","Peakstrider","Stonevigor","Snowguard","Highcliff","Graniteheart"] },
-  tabaxi: { male:["Bright Claw","Silent Reed","Copper Pounce","Quick Brook","Whispering Gale","Silver Thread","Ember Prowl","Black Ember","Clever Ash","Quiet Thorn"],
-           female:["Humming Quill","Soft Feather","Swift Lily","Amber Song","Shining Brook","Saffron Breeze","Velvet Step","Silent Jasmine","Hidden Dew","Flickering Ember"],
-           surname:["of the Tall Grasses","of the Sun Dunes","of the Moon Isles","of Whispering Reeds","of Jade Canopies","of Painted Stones","of Saffron Markets","of Wandering Paths","of the Coral Coves","of Starlit Sands"] },
-  firbolg: { male:["Brom","Fenn","Tolan","Ronan","Hale","Rowan","Cael","Doran","Eamon","Leif"],
-           female:["Aine","Bree","Kira","Maeve","Orla","Riona","Saoirse","Tara","Una","Niamh"],
-           surname:["Oakfriend","Mossmantle","Riverguard","Stonebloom","Thornwarden","Hearthgrove","Moonmeadow","Greenbark","Fogvale","Deepglen"] }
+  human: {
+    male: ["Alric","Tomas","Cedric","Willem","Marcus","Robert","Victor","Joran","Edric","Jonas","Leoric","Harlan","Roderick","Tristan","Gavin"],
+    female: ["Elira","Selene","Mara","Fiona","Katarina","Sophia","Isolde","Lydia","Rowena","Annette","Clara","Elise","Helena","Nadia","Vera"],
+    surname: ["Blackwood","Fairweather","Strongarm","Ravenshadow","Holloway","Rivers","Marsh","Faraday","Kestrel","Dunwich","Ashford","Crowley","Thorne","Merriweather","Hawke"]
+  },
+  dwarf: {
+    male: ["Thrain","Dain","Borin","Rurik","Kargrom","Eberk","Baern","Adrik","Bruenor","Harbek"],
+    female: ["Helja","Vistra","Brynja","Hlin","Sigrun","Audhild","Eldeth","Gunnloda","Finellen","Ilde"],
+    surname: ["Ironfist","Stonehelm","Coppervein","Goldbeard","Frostaxe","Battlehammer","Fireforge","Dankil","Thunderbrand","Granitebraid"]
+  },
+  elf: {
+    male: ["Aelar","Thamior","Carric","Eldrin","Loric","Soveliss","Varis","Theren","Rolen","Imar"],
+    female: ["Arwen","Sylvara","Naivara","Shalana","Thia","Keyleth","Lia","Miala","Shava","Enna"],
+    surname: ["Moonwhisper","Silverfrond","Windwalker","Dawnsinger","Evenwood","Starbloom","Nightbreeze","Willowshade","Sunweaver","Wavesong"]
+  },
+  drow: {
+    male: ["Ryld","Jarlaxle","Pharaun","Nalfein","Solaufein","Belwar","Zeknar","Verrak","Ilzt","Tazraen"],
+    female: ["Quenthel","Vierna","Liriel","Zesstra","Triel","Halisstra","Zarra","Belira","Szinrae","Shi'nayne"],
+    surname: ["Do'Urden","Baenre","Mizzrym","Xorlarrin","DeVir","Frey'lar","Despana","Kenafin","Faen'za","Teken'ghym"]
+  },
+  halfling: {
+    male: ["Alton","Milo","Corrin","Perrin","Finnan","Merric","Roscoe","Colby","Tobin","Doolan"],
+    female: ["Andry","Cora","Jillian","Seraphina","Shaena","Lavinia","Tegan","Verna","Bree","Marigold"],
+    surname: ["Tealeaf","Brushgather","Goodbarrel","Underbough","Greenbottle","High-hill","Thistlefoot","Honeypot","Hilltopple","Hearthhome"]
+  },
+  gnome: {
+    male: ["Boddynock","Fonkin","Warryn","Zook","Alston","Jebeddo","Pilwicken","Foddex","Duvamil","Wizzle"],
+    female: ["Bimpnottin","Carlin","Loopmottin","Nissa","Roywyn","Ellyjobell","Lorilla","Mardnab","Nyx","Tana"],
+    surname: ["Nackle","Murnig","Daergel","Ningel","Timbers","Fiddlefen","Sparkspindle","Cobblelob","Beren","Turen"]
+  },
+  halforc: {
+    male: ["Grom","Ugar","Thok","Brug","Karash","Dorn","Rogar","Ulf","Karguk","Mogar"],
+    female: ["Shauka","Urtha","Mogha","Krula","Sutha","Baggi","Engong","Myev","Ovina","Yevelda"],
+    surname: ["Bonebreaker","Skullcrusher","Red Fang","Grimscar","Bloodtusk","Ironmaw","Skullcleaver","Rotfang","Stonehide","Ashskull"]
+  },
+  tiefling: {
+    male: ["Malachai","Zephyr","Damakos","Therai","Akmenos","Lucian","Mordai","Zeth","Erebus","Caelum"],
+    female: ["Nyx","Seraphine","Leucis","Kallista","Azariah","Belladonna","Lilith","Rieta","Zaida","Vesper"],
+    surname: ["Shadowrend","Emberborn","Hellbrand","Darkflame","Nightbloom","Ashenveil","Cindervale","Grimlight","Umbrage","Doomwhisper"]
+  },
+  dragonborn: {
+    male: ["Arjhan","Balasar","Rhogar","Torinn","Kriv","Medrash","Nadarr","Pandjed","Patrin","Tarhun"],
+    female: ["Akra","Sora","Thava","Vyra","Jheri","Kava","Mishann","Nala","Perra","Uadjit"],
+    surname: ["Myastan","Clethtinthiallor","Nemmonis","Drachedandion","Kepeshkmolik","Fenkenkabradon","Verthisathurgiesh","Yrjixtileth","Shestendeliath","Zekkar"]
+  },
+  goliath: {
+    male: ["Aukan","Kavak","Thalai","Jorrun","Eglath","Gauthak","Iligit","Manneo","Othek","Thotham"],
+    female: ["Vaunea","Imra","Orila","Anaq","Hulda","Keothi","Maveith","Nola","Thalai","Rava"],
+    surname: ["Stoneshield","Thunderstep","Boulderborn","Skywatcher","Rockrunner","Peakstrider","Stonevigor","Snowguard","Highcliff","Graniteheart"]
+  },
+  tabaxi: {
+    male: ["Bright Claw","Silent Reed","Copper Pounce","Quick Brook","Whispering Gale","Silver Thread","Ember Prowl","Black Ember","Clever Ash","Quiet Thorn"],
+    female: ["Humming Quill","Soft Feather","Swift Lily","Amber Song","Shining Brook","Saffron Breeze","Velvet Step","Silent Jasmine","Hidden Dew","Flickering Ember"],
+    surname: ["of the Tall Grasses","of the Sun Dunes","of the Moon Isles","of Whispering Reeds","of Jade Canopies","of Painted Stones","of Saffron Markets","of Wandering Paths","of the Coral Coves","of Starlit Sands"]
+  },
+  firbolg: {
+    male: ["Brom","Fenn","Tolan","Ronan","Hale","Rowan","Cael","Doran","Eamon","Leif"],
+    female: ["Aine","Bree","Kira","Maeve","Orla","Riona","Saoirse","Tara","Una","Niamh"],
+    surname: ["Oakfriend","Mossmantle","Riverguard","Stonebloom","Thornwarden","Hearthgrove","Moonmeadow","Greenbark","Fogvale","Deepglen"]
+  },
+  tortle: {
+    male: ["Kopo","Mako","Rasho","Tamu","Boru","Kavan","Talo","Moro","Garu","Sava"],
+    female: ["Kela","Mira","Suri","Tila","Bana","Kovi","Taya","Sora","Gila","Nuri"],
+    surname: ["Shellward","Tidewalker","Seagrass","Wavecarver","Sandburrow","Coralback","Reedferry","Saltshore","Driftlog","Pebblehide"]
+  },
+  kenku: {
+    male: ["Karr","Rook","Kaak","Vek","Kek","Rik","Varr","Kirr","Kekko","Kraa"],
+    female: ["Ree","Kia","Rika","Vea","Kee","Rii","Kiri","Viri","Kaya","Risa"],
+    surname: ["Featherfall","Blackwing","Tinvoice","Hollowcall","Quickbeak","Echopeak","Nightcaw","Skylilt","Sharpquill","Dustplume"]
+  },
+  kobold: {
+    male: ["Skrix","Vekket","Razik","Drak","Krix","Ruk","Zekk","Tirx","Varrik","Kazz"],
+    female: ["Skaai","Kizzi","Riza","Vikki","Tazzi","Kukka","Rikka","Drazi","Sizzi","Tirra"],
+    surname: ["Emberchip","Stonebite","Tunnelgleam","Scrapclaw","Redscale","Cindersnap","Rustsnout","Sparkclaw","Dustscale","Flintspark"]
+  },
+  loxodon: {
+    male: ["Boram","Tovan","Ramak","Daman","Hareth","Jorvun","Kelram","Loman","Maruk","Neram"],
+    female: ["Amara","Devi","Hema","Isha","Kala","Mira","Nala","Rani","Sana","Veda"],
+    surname: ["Trunkbearer","Stonebinder","Oathcarver","Granitepath","Sagestep","Marbleguard","Sandtreader","Sunvein","Ivorybrow","Templeward"]
+  },
+  leonin: {
+    male: ["Akar","Barun","Ceros","Dakar","Harun","Javin","Koros","Marun","Rakor","Tavus"],
+    female: ["Amara","Besra","Caela","Dasha","Hera","Kira","Lareen","Nessa","Sera","Tala"],
+    surname: ["Proudclaw","Dawnmane","Sunpride","Swiftstep","Stonepride","Windstalker","Goldmane","Nightstalk","Grassrunner","Brightfang"]
+  },
+  minotaur: {
+    male: ["Aster","Brax","Corvos","Damar","Gorth","Hadar","Korvan","Marek","Roth","Turog"],
+    female: ["Astra","Brena","Coria","Dessa","Gora","Hessa","Kara","Mara","Risa","Tura"],
+    surname: ["Ironhorn","Stormhoof","Labyrn","Boulderhoof","Redhorn","Maizewalker","Stonemaze","Stronghorn","Longhorn","Deepmaze"]
+  },
+  changeling: {
+    male: ["Aven","Corin","Darel","Evan","Ilan","Jas","Korin","Lem","Nivek","Sorin"],
+    female: ["Asha","Cali","Dara","Elin","Ira","Jae","Kari","Lena","Mira","Sera"],
+    surname: ["Manyfaces","Softstep","Mistguise","Quickmask","Shiftwhisper","Greyveil","Palegleam","Whiteshape","Veilwalk","Nameless"]
+  },
+  shifter: {
+    male: ["Ash","Badger","Bran","Fang","Holt","Kade","Moss","Rook","Thorn","Warr"],
+    female: ["Briar","Dawn","Ember","Fawn","Kaia","Lark","Reed","Sable","Thistle","Wren"],
+    surname: ["Wildroot","Moonscent","Swiftpelt","Briarhide","Stonefur","Fernstride","Nightmane","Riverpad","Ashclaw","Greytrack"]
+  },
+  warforged: {
+    male: ["Anchor","Bastion","Cipher","Drill","Forge","Gasket","Harbor","Iron","Jolt","Keystone"],
+    female: ["Aegis","Beacon","Ciphera","Ember","Geara","Halo","Ivory","Javelin","Kindle","Lumen"],
+    surname: ["Unit-3","Model-7","Pattern-12","Series-IX","Mark-V","Batch-22","Node-5","Frame-4","Shell-8","Array-10"]
+  },
+  vedalken: {
+    male: ["Arix","Bener","Cerul","Dovin","Evar","Feron","Ivus","Neral","Sarin","Varek"],
+    female: ["Ari","Cera","Devi","Enna","Ila","Lira","Nera","Sela","Tala","Vena"],
+    surname: ["Bluehaze","Tideglass","Mindscroll","Aetherloom","Coldcurrent","Stillwater","Glassmind","Logicweir","Deepthought","Inkweave"]
+  },
+  owlin: {
+    male: ["Arro","Bubo","Caro","Drin","Eyo","Faro","Gryx","Hoot","Iro","Jaro"],
+    female: ["Ara","Bina","Ciri","Dari","Evi","Fia","Gala","Hina","Ivi","Jina"],
+    surname: ["Nightplume","Moonfeather","Hollowgaze","Starwing","Duskbeak","Glidewind","Softhoot","Skylumen","Whisperflight","Cloudplume"]
+  },
+  harengon: {
+    male: ["Brisk","Clover","Dandel","Fennel","Harro","Jasper","Knot","Pip","Quill","Thim"],
+    female: ["Bun","Clovera","Daisy","Fritta","Honey","Junie","Pippa","Rosie","Tansy","Willa"],
+    surname: ["Quickfoot","Warrenhop","Burrowtail","Dewclover","Harebell","Skyleap","Greenmeadow","Thump","Nibble","Springleaf"]
+  },
+  satyr: {
+    male: ["Aeson","Brix","Calius","Doros","Eryx","Faunus","Kyros","Lykos","Neron","Thespis"],
+    female: ["Aella","Brisa","Calla","Dione","Eris","Fauna","Lyra","Nysa","Rhea","Tessa"],
+    surname: ["Winewhistle","Greenglade","Piperidge","Thornsong","Merrifenn","Hilldance","Ramblebrook","Oakpipe","Goldthicket","Leafpipe"]
+  },
+  triton: {
+    male: ["Aqual","Boreas","Coral","Delfin","Eryon","Galor","Hydor","Nereus","Pelag","Thal"],
+    female: ["Aphra","Coralia","Delphi","Eldra","Gaia","Maris","Nerida","Pelena","Sirra","Thassa"],
+    surname: ["Seamarch","Wavecrest","Brineguard","Pearlcurrent","Tidebinder","Foamrider","Kelpcloak","Deepwatch","Sprayharp","Reeftide"]
+  },
+  yuanti: {
+    male: ["Azhiss","Bashar","Chazek","Drazzi","Ezhar","Hassik","Izzar","Sszek","Tazir","Zehss"],
+    female: ["Azira","Beshka","Chassra","Drezza","Ezira","Hassra","Isska","Sszira","Tazra","Zehra"],
+    surname: ["of the Coil","of the Venom","of the Silent Pit","Serpentcrest","Viperscale","Shadowcoil","Nightfang","Whispershed","Fangveil","Coilward"]
+  },
+  lizardfolk: {
+    male: ["Arak","Brask","Chak","Drass","Ghak","Hassk","Izzik","Krass","Shakk","Vrask"],
+    female: ["Arasa","Braska","Chassa","Drassa","Hassa","Issa","Krassa","Shassa","Vrassa","Zassa"],
+    surname: ["Mudscale","Marshgaze","Reedfins","Bogclaw","Stoneswim","Sunscale","Stillwater","Bonefin","Shadegill","Dreampool"]
+  },
+  bugbear: {
+    male: ["Brukk","Darg","Gash","Krull","Marr","Rukk","Sharg","Thokk","Ugg","Varr"],
+    female: ["Brukka","Darga","Gasha","Krulla","Marra","Rukka","Sharga","Thokka","Ugga","Varra"],
+    surname: ["Blackmaw","Longarm","Nightpelt","Skulltusk","Redhide","Darksnarl","Grimfur","Boneback","Ironpelt","Miresnout"]
+  },
+  goblin: {
+    male: ["Bikk","Drik","Grax","Hik","Jik","Klik","Nok","Rik","Snik","Vik"],
+    female: ["Bikka","Drika","Graxa","Hikka","Jikka","Klia","Nokka","Rikka","Snika","Vikka"],
+    surname: ["Ratbit","Rustnail","Sootsmudge","Fleagrin","Tinsnatch","Wiretwist","Grubpocket","Moldnose","Sparkskip","Brickstain"]
+  },
+  hobgoblin: {
+    male: ["Arkh","Barok","Dargan","Grish","Horak","Kargan","Loruk","Mardak","Rhaz","Torak"],
+    female: ["Arka","Barra","Darga","Grisha","Hora","Karra","Lora","Marda","Rhaza","Tora"],
+    surname: ["Steelbanner","Bloodmarch","Ironfile","Warbrand","Skirmcrest","Drillscar","Shieldlash","Campwarden","Redrank","Warscribe"]
+  },
+  kalashtar: {
+    male: ["Anat","Beren","Doran","Eshan","Ilan","Joran","Kiran","Lashan","Rayan","Talen"],
+    female: ["Asha","Bira","Devi","Eila","Ira","Kala","Lira","Mira","Sera","Tira"],
+    surname: ["Dreamborne","Lightweave","Mindweft","Soulbridge","Tranceward","Calmriver","Nightwatch","Starweft","Thoughtsinger","Dawnmind"]
+  },
+  // already included: tabaxi, firbolg, goliath, tiefling, dragonborn, etc.
 };
 
 /** ============ Bilingual trait data (100 each) ============ */
