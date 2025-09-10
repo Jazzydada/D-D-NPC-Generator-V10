@@ -352,18 +352,17 @@ const weightedRoll = (items, weightMap) => {
 };
 
 function generateName(race, gender) {
-  const key = raceMap[race] || race.toLowerCase();
-  const entry = names[key];
-  if (!entry) return "Unknown Name";
-  let pool =
-    gender === "Male" && entry.male
-      ? entry.male
-      : gender === "Female" && entry.female
-      ? entry.female
-      : [...(entry.male || []), ...(entry.female || [])];
-  if (!pool.length) pool = ["Alex", "Morgan", "Rin", "Kael", "Rowan"];
+  const key = (raceMap[race] || race || "").toLowerCase().replace(/\s+|[()]/g, "");
+  let entry = names[key] || names["human"]; // Fallback til human hvis race mangler
+  // vælg kønspool – ellers brug begge
+  let pool = (gender === "Male" && entry.male) ? entry.male
+           : (gender === "Female" && entry.female) ? entry.female
+           : [...(entry.male || []), ...(entry.female || [])];
+  if (!pool.length) pool = ["Alex","Morgan","Rin","Kael","Rowan"]; // ekstra fallback
   const first = roll(pool);
-  const last = entry.surname ? roll(entry.surname) : "";
+  // hvis racen ikke har efternavne, brug humans – ellers tom streng
+  const last = entry.surname?.length ? roll(entry.surname)
+             : (names.human.surname ? roll(names.human.surname) : "");
   return `${first} ${last}`.trim();
 }
 
