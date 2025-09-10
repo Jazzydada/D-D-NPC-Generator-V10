@@ -480,16 +480,9 @@ ${tr.fields.demeanor}: ${npc.demeanor}`,
 
         <div className="h-1" />
 
-        <div className="flex flex-wrap gap-3">
+   <div className="flex flex-wrap gap-3">
   <button className="px-4 py-2 rounded-2xl bg-slate-800 hover:bg-slate-700" onClick={() => copy(textOut)}>{tr.buttons.copyText}</button>
   <button className="px-4 py-2 rounded-2xl bg-slate-800 hover:bg-slate-700" onClick={() => copy(jsonOut)}>{tr.buttons.copyJson}</button>
-  <button
-    className="px-4 py-2 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white"
-    onClick={() => copy(buildMidjourneyPrompt({ ...npc }))}
-    title="Copy an English Midjourney prompt"
-  >
-    Copy (Midjourney)
-  </button>
 </div>
         
       </div>
@@ -526,21 +519,4 @@ function seedFromString(s = "") {
   let h = 0;
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
   return (h % 99999) + 1; // 1..99999
-}
-
-function buildMidjourneyPrompt(npc) {
-  // always use English terms, even if UI is DA
-  const genderOut = displayGenderFor(npc.race, npc.gender, t.en); // "Unrevealed" for hidden-gender races
-  const parts = [
-    "fantasy character portrait, head & shoulders",
-    `${npc.race} ${genderOut} ${npc.profession}`,
-    `demeanor: ${npc.demeanor}`,
-    `appearance details: ${npc.appearance}`,
-    `speaking style: ${npc.speech}`,
-    `movement vibe: ${npc.movement}`,
-    "rich lighting, painterly detail, sharp focus, neutral background, subtle costume matching the role, color harmony, (no modern items), (no text)"
-  ];
-  const body = parts.join(", ");
-  const seed = seedFromString(npc.name || `${npc.race}-${npc.profession}`);
-  return `/imagine prompt: ${body} --ar 2:3 --v 6 --style raw --s 250 --seed ${seed}`;
 }
